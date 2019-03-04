@@ -1,0 +1,56 @@
+<h2 style="margin: 5%">Editar Receta</h2>
+<div class="container" style="margin: 5%;">
+  <div class="row">
+    <div class="input-group mb-3" style="display: flex">
+      <div class="input-group-prepend">
+        <h4 class="input-group-text" style="margin-right:39px;">nombre: </h4>
+      </div>
+      <input type="text" class="form-control" [(ngModel)]="recipe.name" style="width: 400px">
+    </div>
+    <div class="input-group mb-3" style="display: flex">
+      <div class="input-group-prepend">
+        <h4 class="input-group-text" style="margin-right:5px;">Descripción: </h4>
+      </div>
+      <input type="text" class="form-control" [(ngModel)]="recipe.description" style="width: 400px">
+    </div>
+    <div class="input-group mb-3" style="display: flex">
+      <div class="input-group-prepend">
+        <h4 class="input-group-text" style="margin-right:41px;">imagen: </h4>
+      </div>
+      <input type="text" class="form-control" [(ngModel)]="recipe.imagePath" style="width: 400px">
+    </div>
+
+    <hr style=" margin-left: 0px;height: 3px;width: 650px; color: black">
+    <h3 style="margin-top: 10px;">Ingredientes</h3>
+    <hr style=" margin-left: 0px;height: 3px;width: 650px; color: black">
+    <div class="row" *ngFor="let ing of recipe.ingredients; let i = index" style="margin-top: 10px; display: flex; width: 50%;">
+      <div style="margin: 0 auto; display: flex;">
+        <h4 style="margin: 0 10px">Nombre</h4>
+        <input type="text" class="form-control" [(ngModel)]="ing.name" style="width: 190px; margin-right: 20px">
+        <h4 style="margin-right: 10px">Monto</h4>
+        <input type="text" class="form-control" [(ngModel)]="ing.amount" style="width: 190px">
+        <button class="btn btn-danger" (click)="delete(i)" style="margin-left: 2%">Eliminar</button>
+      </div>
+    </div>
+  </div>
+  <h4 style="margin-top: 20px;">Agregar ingrediente</h4>
+  <hr style=" margin-left: 0px;height: 3px;width: 650px;">
+  <div class="col-xs-12" style="display: flex; margin-bottom: 20px">
+    <br>
+    <div>
+      <label>nombre:</label>
+      <input [(ngModel)]="ingredient.name">
+      <br>
+      <br>
+      <label>monto:</label>
+      <input [(ngModel)]="ingredient.amount" type="number" [min]="1" style="margin-left: 9px">
+    </div>
+    <button [disabled]="ingredient.name === '' || ingredient.amount=== null" style=" margin: auto 20px;width: 100px; height: 30px" (click)="createIngredient(ingredient)" class="btn btn-success">Agregar</button>
+  </div>
+  <hr style=" margin: 5% 0;height: 3px;width: 650px; color: black">
+  <div style="text-align: center; width: 50%;">
+    <button class="btn btn-primary" (click)="edit()">Modificar</button>
+    <button class="btn btn-danger" (click)="redirect()">Cancelar</button>
+  </div>
+
+</div>

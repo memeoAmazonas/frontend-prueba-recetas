@@ -1,0 +1,30 @@
+<div class="row">
+  <h4>ingredientes</h4>
+  <br>
+  <br>
+  <div class="col-xs-12" style="display: flex; justify-content: normal;">
+    <div>
+    <label>nombre:</label>
+    <input [(ngModel)]="ingredient.name">
+      <br>
+      <br>
+    <label>monto:</label>
+    <input [(ngModel)]="ingredient.amount" type="number" [min]="1" style="margin-left: 9px">
+    </div>
+    <button [disabled]="ingredient.name === '' || ingredient.amount === null" style="width: 25%; margin: 4% auto" (click)="createIngredient(ingredient)" class="btn btn-success">Agregar</button>
+  </div>
+  <span *ngIf="errorIngredient">campos necesarios</span>
+</div>
+<div class="row" style="margin-top: 2%;">
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let ingredient of ingredients">
+        {{ ingredient.name }} - {{ ingredient.amount }}
+      </li>
+    </ul>
+  </div>
+</div>
+
+<hr>
